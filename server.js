@@ -2,10 +2,12 @@
 	url: get parameters from URL
 	http: create the server
 	https: get the token using a HTTPS GET request
+	port: assign or get the port used by Heroku
 */
 const url = require('url');
 const http = require('http');
 const https = require('https');
+const port = process.env.PORT || 8080;
 
 http.createServer(function(request, response) {
 	//access code gotten from slack servers when logged in
@@ -38,7 +40,7 @@ http.createServer(function(request, response) {
 			}
 		});
 	});
-}).listen(8000);
+}).listen(port);
 
 //redirect to a specific page
 function redirect(response, url) {
